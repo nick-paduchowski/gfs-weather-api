@@ -25,7 +25,9 @@ variables = ['pressfc', 'gustsfc', 'tmpsfc']
 #Tmpsfc is surface temperature measured in kelvin
 #Rhprs is relative humidity as a %
 
-GFS_URL = f'http://nomads.ncep.noaa.gov/dods/gfs_0p25/gfs20240201/gfs_0p25_00z' # GFS run for 1/30/24
+date_string = datetime.today().strftime('%Y%m%d')
+
+GFS_URL = f'http://nomads.ncep.noaa.gov/dods/gfs_0p25/gfs{date_string}/gfs_0p25_00z' # GFS run for current date
 dataset = xr.open_dataset(GFS_URL)[variables]
 
 # Finding the nearest lat long coordinates for this point
